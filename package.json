@@ -1,0 +1,15 @@
+{
+  "name": "electron-planner",
+  "version": "1.0.0",
+  "description": "Planner",
+  "main": "main.js",
+  "scripts": {
+    "test": "run",
+    "start": "electron ."
+  },
+  "author": "Drew",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^34.0.1"
+  }
+}

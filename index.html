@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planner</title>
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js" defer></script>
+</head>
+
+<body>
+    <div class="title-bar">
+        <div class="title-bar-buttons">
+            <button id="minimize-btn">_</button>
+            <button id="maximize-btn">[]</button>
+            <button id="close-btn">X</button>
+        </div>
+    </div>
+    <nav class="row">
+        <a href="#" class="nav__link">HOME</a>
+        <a href="#" class="nav__link">DAY</a>
+        <a href="#" class="nav__link">CALENDAR</a>
+        <a href="#" class="nav__link">GOALS</a>
+    </nav>
+    <div class="app__container">
+        <div class="task__list">
+            <div class="task__title--container">
+                <h3 class="task__list--title">Live Task View</h3>
+                <button class="task__list--edit">Edit</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        const { ipcRenderer } = require('electron');
+
+        document.getElementById('minimize-btn').addEventListener('click', () => {
+            ipcRenderer.send('minimize-window');
+        });
+
+        document.getElementById('maximize-btn').addEventListener('click', () => {
+            ipcRenderer.send('maximize-window');
+        });
+
+        document.getElementById('close-btn').addEventListener('click', () => {
+            ipcRenderer.send('close-window');
+        });
+    </script>
+</body>
+
+</html>
