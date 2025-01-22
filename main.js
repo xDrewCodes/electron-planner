@@ -1,10 +1,16 @@
-const { app, BrowserWindow, ipcMain } = require('electron');
+
+
+const { app, BrowserWindow, ipcMain, screen } = require('electron');
 const path = require('path');
 
 function createWindow() {
+  const { width, height } = screen.getPrimaryDisplay().workAreaSize;
+
   const mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: (3 * width) / 4,
+    height: (3 * height) / 4,
+    x: width / 6,
+    y: height / 6,
     icon: path.join(__dirname, './assets/icon.png'),
     titleBarStyle: 'hidden', // Hide the default title bar
     webPreferences: {
