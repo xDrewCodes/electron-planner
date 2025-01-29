@@ -1,9 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One&family=Sansita:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700;1,800;1,900&family=Sometype+Mono:ital,wght@0,400..700;1,400..700&display=swap');
+
 
 html {
-    --theme__color: #b4a9a5;
-    --secondary__color: #4e413b;
+
+    --text__color__dark: #4e413b;
+    --nav__color: #998B85;
+    --card__color__dark: #C3B4A2;
+    --card__color__normal: #D7CDC1;
+    --card__color__light: #E3DCD3;
     --bg__color: #ece9e5;
+    --text__color: white;
+
+    --dashboard__spacing: 48px;
 
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -13,51 +22,19 @@ html {
     user-select: none;
 
     scroll-behavior: smooth;
+
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
 }
 
 body {
     background-color: var( --bg__color );
     margin: 0;
     -webkit-app-region: drag;
-}
-
-
-/* TITLE BAR */
-
-.title-bar {
-    height: 30px;
-    background-color: var(--secondary__color);
-    -webkit-app-region: drag;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 10px;
-}
-
-.title-bar-buttons {
-    display: flex;
-    -webkit-app-region: no-drag;
-    margin-left: auto; /* Move buttons to the right */
-}
-
-.title-bar-buttons button {
-    background: none;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    color: white;
-    font-size: 14px;
-}
-
-.title-bar-buttons button:hover {
-    background-color: rgba(255, 255, 255, 0.2);
 }
 
 
@@ -72,23 +49,51 @@ body {
 
 /* NAVIGATION */
 
+
 nav {
     position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    height: 80px;
+    background-color: var( --nav__color );
+    height: calc( var(--dashboard__spacing) * 0.75 );
     width: 100%;
     display: flex;
+    flex-direction: row-reverse;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    -webkit-app-region: drag;
+}
+
+nav * {
+    -webkit-app-region: no-drag;
+}
+
+.nav__icons {
+    font-size: 40px;
+    color: var( --text__color );
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+
+.nav__img {
+    width: 24px;
+    height: 24px;
+    filter: invert(100%);
+    cursor: pointer;
+}
+
+.nav__links {
+    display: flex;
+    align-items: center;
 }
 
 .nav__link {
-    margin: 16px;
+    margin-right: 18px;
     text-decoration: none;
-    color: var( --secondary__color );
-    font-weight: 600;
-    font-size: 32px;
+    color: var( --text__color );
+    font-family: 'Sometype Mono';
+    font-weight: 800;
+    font-size: 18px;
     border-bottom: rgba(0,0,0,0) 3px solid;
 }
 
@@ -100,26 +105,57 @@ nav {
 /* MAIN PAGE */
 
 .app__container {
-    position: absolute;
-    top: 100px;
+    position: fixed;
+    top: 50%;
     display: flex;
-    height: calc(100vh - 100px);
+    height: calc(100vh - ( var(--dashboard__spacing) ) );
     width: 100%;
-    padding: 2.5%;
+    max-width: 1500px;
+    max-height: 800px;
+    padding: var( --dashboard__spacing );
+    left: 50%;
+    translate: -50% -50%;
+}
+
+/* DASH NODES */
+
+
+.dashboard__nodes {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+}
+
+.node {
+    display: flex;
+    background-color: var( --card__color__light );
+}
+
+.node__title--container {
+    background-color: var( --card__color__normal );
+    width: 100%;
+    height: var( --dashboard__spacing );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.node__title {
+    font-family: 'Sometype Mono';
+    color: var( --text__color__dark );
+    font-weight: 700;
+    font-size: 24px;
 }
 
 
 /* DAILY TASKS */
 
-.task__list {
-    display: flex;
+.tasks__node {
     flex-direction: column;
-    position: absolute;
-    width: 45%;
-    height: 364px;
-    background-color: white;
-    padding: 0 24px;
-    overflow-y: scroll;
+    width: 50%;
+    height: 100%;
+    margin: 0 var( --dashboard__spacing );
 }
 
 .task__list--title {
@@ -127,43 +163,34 @@ nav {
     font-size: 24px;
 }
 
-.task {
-    background-color: var( --theme__color );
-    height: 120px;
+
+/* Goals */
+
+.goals-controls__container {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+}
+
+.goals__node {
     width: 100%;
-    margin-bottom: 16px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: white;
-    padding: 18px 40px;
-}
-
-.task:nth-child(-n + 2) {
-    background-color: var( --secondary__color );
-}
-
-.task__current {
-    transform: scale(1.1);
-    margin: 16px 0;
-    background-color: var( --secondary__color );
-}
-
-.task__title--container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 24px 0;
-}
-
-.task__list--edit {
-    border: none;
-    padding: 12px 40px;
-    background-color: var( --secondary__color );
-    color: white;
-    font-size: 18px;
-    font-weight: 600;
+    height: 100%;
 }
 
 
-/* WEEKLY TASKS */
+/* CONTROLS */
+
+.controls__node {
+    flex-direction: column;
+    width: 100%;
+    height: 60%;
+    margin-top: var( --dashboard__spacing );
+}
+
+/* STATS */
+
+.stats__node {
+    flex-direction: column;
+    width: 30%;
+    height: 100%;
+}

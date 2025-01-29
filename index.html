@@ -7,43 +7,62 @@
     <title>Planner</title>
     <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
     <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/8a3e67506d.js" defer crossorigin="anonymous"></script>
     <script src="app.js" defer></script>
 </head>
 
 <body>
-    <div class="title-bar">
-        <div class="title-bar-buttons">
-            <button id="minimize-btn">_</button>
-            <button id="maximize-btn">[]</button>
-            <button id="close-btn">X</button>
+    <nav>
+        <div class="nav__icons">
+            <img src="./assets/icons8-close-window-24.png" alt="" class="nav__img nav__close">
+            <img src="./assets/icons8-maximize-window-24 (1).png" alt="" class="nav__img nav__maximize">
+            <img src="./assets/icons8-minimize-window-24.png" alt="" class="nav__img nav__minimize">
         </div>
-    </div>
-    <nav class="row">
-        <a href="#" class="nav__link">HOME</a>
-        <a href="#" class="nav__link">DAY</a>
-        <a href="#" class="nav__link">CALENDAR</a>
-        <a href="#" class="nav__link">GOALS</a>
+        <div class="nav__links">
+            <a href="#" class="nav__link">Dashboard</a>
+            <a href="#" class="nav__link">Goals</a>
+            <a href="#" class="nav__link">Day</a>
+            <a href="#" class="nav__link">Calendar</a>
+        </div>
     </nav>
     <div class="app__container">
-        <div class="task__list">
-            <div class="task__title--container">
-                <h3 class="task__list--title">Live Task View</h3>
-                <button class="task__list--edit">Edit</button>
+        <div class="dashboard__nodes">
+            <div class="goals-controls__container">
+                <div class="goals__node node">
+                    <div class="node__title--container">
+                        <h3 class="node__title">Goals</h3>
+                    </div>
+                </div>
+                <div class="controls__node node">
+                    <div class="node__title--container">
+                        <h3 class="node__title">Controls</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="tasks__node node">
+                <div class="node__title--container">
+                    <h3 class="node__title">Live Task View</h3>
+                </div>
+            </div>
+            <div class="stats__node node">
+                <div class="node__title--container">
+                    <h3 class="node__title">Stats</h3>
+                </div>
             </div>
         </div>
     </div>
     <script>
         const { ipcRenderer } = require('electron');
 
-        document.getElementById('minimize-btn').addEventListener('click', () => {
+        document.getElementsByClassName('nav__minimize')[0].addEventListener('click', () => {
             ipcRenderer.send('minimize-window');
         });
 
-        document.getElementById('maximize-btn').addEventListener('click', () => {
+        document.getElementsByClassName('nav__maximize')[0].addEventListener('click', () => {
             ipcRenderer.send('maximize-window');
         });
 
-        document.getElementById('close-btn').addEventListener('click', () => {
+        document.getElementsByClassName('nav__close')[0].addEventListener('click', () => {
             ipcRenderer.send('close-window');
         });
     </script>
