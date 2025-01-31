@@ -163,6 +163,37 @@ nav * {
     font-size: 24px;
 }
 
+.tasks__container {
+    height: 100%;
+    margin: var( --dashboard__spacing );
+    overflow-x: hidden;
+    overflow-y: scroll;
+    padding: 8px;
+}
+
+.tasks__container::-webkit-scrollbar {
+    display: none;
+}
+
+.task__item {
+    background-color: var( --card__color__normal );
+    display: flex;
+    justify-content: space-between;
+    padding: 16px;
+    margin-bottom: 8px;
+}
+
+.task__item--current {
+    background-color: var( --card__color__dark );
+    scale: 1.04;
+    margin: 10px 0;
+}
+
+.task__item * {
+    font: 16px 'Sometype Mono';
+}
+
+
 
 /* Goals */
 

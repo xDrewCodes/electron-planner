@@ -1,8 +1,66 @@
-/* FUNCS */
+function setTasks() {
+    // Fetch the tasks from the JSON file
+    fetch('tasks.json')
+        .then(response => response.json())
+        .then(tasks => {
+            const now = new Date();
+            let lastTaskDiv = null;
+
+            // Update task times for the current day
+            tasks = updateTaskTimes(tasks);
+
+            // Clear the task container
+            const taskContainer = document.getElementsByClassName('tasks__container')[0];
+            if (taskContainer) {
+                taskContainer.innerHTML = '';
+            } else {
+                console.error('Task container not found!');
+                return;
+            }
+
+            tasks.forEach(task => {
+                let taskTime = new Date(task.startTime);
+                let hours = taskTime.getHours();
+                let minutes = taskTime.getMinutes();
+                if (minutes === 0) {
+                    minutes = '00';
+                }
+                let time = hours + ':' + minutes;
+
+                const newDiv = addTask(task.title, time);
+
+                // Check if the current time is between this task and the next task
+                if (taskTime <= now) {
+                    lastTaskDiv = newDiv;
+                }
+            });
+
+            // Add the class to the last task that has happened
+            if (lastTaskDiv) {
+                lastTaskDiv.classList.add('task__item--current');
+            }
+        })
+        .catch(error => {
+            console.error('Error loading the tasks.json file:', error);
+        });
+}
+
+// Function to update task times for the current day
+function updateTaskTimes(tasks) {
+    const today = new Date();
+    return tasks.map(task => {
+        let taskTime = new Date(task.startTime);
+        taskTime.setFullYear(today.getFullYear(), today.getMonth(), today.getDate());
+        task.startTime = taskTime.toISOString();
+        return task;
+    });
+}
+
+// Modify addTask to return the created div
 function addTask(title, time) {
     // Create a new div element
     const newDiv = document.createElement('div');
-    newDiv.classList.add('task');
+    newDiv.classList.add('task__item');
 
     // Create and append the h1 for time
     const h1 = document.createElement('h1');
@@ -15,39 +73,85 @@ function addTask(title, time) {
     newDiv.appendChild(h1_2);
 
     // Find the target div (task list)
-    const targetDiv = document.getElementsByClassName('task__list')[0];
+    const targetDiv = document.getElementsByClassName('tasks__container')[0];
     
     if (targetDiv) {
-        // Append the new task to the target div
         targetDiv.appendChild(newDiv);
     } else {
         console.error('Target div not found!');
     }
-}
 
-/* JSON FUNCS */
-function setTasks() {
-    // Fetch the tasks from the JSON file
-    fetch('tasks.json')
-        .then(response => response.json())
-        .then(tasks => {
-            tasks.forEach(task => {
-                
-                let time = new Date(task.startTime)
-                m = time.getMinutes()
-                if ( m == 0 ) {
-                    m = '00'
-                }
-                time = time.getHours() + ':' + m
-
-                addTask(task.title, time);
-            });
-        })
-        .catch(error => {
-            console.error('Error loading the tasks.json file:', error);
-        });
+    return newDiv;
 }
 
 // Call setTasks to load and display tasks
 setTasks();
 
+// Calculate the time until the next minute
+const now = new Date();
+const secondsUntilNextMinute = 60 - now.getSeconds();
+
+// Set a timeout to start the interval at the next minute
+setTimeout(() => {
+    setTasks();
+    setInterval(setTasks, 60000); // 60000 milliseconds = 1 minute
+}, secondsUntilNextMinute * 1000);
+
+
+
+
+
+
+
+
+function editSections() {
+    const editButton = document.getElementsByClassName('controls__edit')[0];
+    if (editButton) {
+        let isEditing = false;
+        editButton.addEventListener('click', () => {
+            const nodes = document.getElementsByClassName('node');
+            if (isEditing) {
+                // Remove event listeners and reset styles
+                for (let i = 0; i < nodes.length; i++) {
+                    nodes[i].style.filter = '';
+                    nodes[i].style.backgroundColor = '';
+                    nodes[i].removeEventListener('click', handleClick);
+                    nodes[i].removeEventListener('mouseover', mouseOverHandler);
+                    nodes[i].removeEventListener('mouseout', mouseOutHandler);
+                    console.log('off')
+                }
+                isEditing = false;
+            } else {
+                // Add event listeners and set styles
+                for (let i = 0; i < nodes.length; i++) {
+                    nodes[i].style.filter = 'brightness(0.5)';
+
+                    // Add mouseover event to reset filter brightness
+                    const mouseOverHandler = () => {
+                        nodes[i].style.filter = 'brightness(1)';
+                    };
+                    nodes[i].addEventListener('mouseover', mouseOverHandler);
+
+                    // Add mouseout event to set filter brightness back to 0.5
+                    const mouseOutHandler = () => {
+                        nodes[i].style.filter = 'brightness(0.5)';
+                    };
+                    nodes[i].addEventListener('mouseout', mouseOutHandler);
+
+                    // Add click event to handle click
+                    const handleClick = () => {
+                        // Your click handling logic here
+                    };
+                    nodes[i].addEventListener('click', handleClick);
+                }
+                isEditing = true;
+                console.log('on')
+            }
+        });
+    } else {
+        console.error('Edit button not found!');
+    }
+}
+
+// Call editSections to set up the event listener
+editSections();
