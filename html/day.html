@@ -31,16 +31,22 @@
                 <div class="node__title--container">
                     <h3 class="node__title">Daily Templates</h3>
                 </div>
+                <div class="day__templates--container">
+
+                </div>
             </div>
             <div class="week__template--node node">
                 <div class="node__title--container">
                     <h3 class="node__title">Weekly Templates</h3>
                 </div>
+                <div class="week__templates--container">
+
+                </div>
             </div>
         </div>
     </div>
     <script>
-        const { ipcRenderer } = require('electron');
+        const { ipcRenderer } = require('electron')
 
         document.getElementsByClassName('nav__minimize')[0].addEventListener('click', () => {
             ipcRenderer.send('minimize-window');

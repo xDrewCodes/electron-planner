@@ -244,12 +244,66 @@ nav * {
 .day__template--node,
 .week__template--node {
     width: 40%;
-    margin: 0 calc( var( --dashboard__spacing ) / 2 )
+    margin: 0 calc( var( --dashboard__spacing ) / 2 );
+    flex-direction: column;
 }
 
 
 /* day */
 
+.day__templates--container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 32px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.day__templates--container::-webkit-scrollbar {
+    display: none;
+}
+
+.day__template--item {
+    background-color: var( --card__color__normal );
+    height: 150px;
+    width: 150px;
+    margin: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var( --text__color__dark );
+    font: 16px 'Sometype Mono';
+}
+
+.day__template--item:hover {
+    filter: brightness(0.9);
+}
+
+.day__template--node .task__item {
+    width: 65%;
+    height: 60px;
+    margin: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font: 16px 'Sometype Mono';
+    position: relative;
+}
+
+.day__template--node .task__item::after {
+    content: 'Edit';
+    position: absolute;
+    right: 8px;
+    font-size: 16px;
+    visibility: hidden;
+}
+
+.day__template--node .task__item:hover:after {
+    visibility: visible;
+    cursor: pointer;
+}
 
 
 

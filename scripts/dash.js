@@ -1,13 +1,13 @@
 function setTasks() {
     // Fetch the tasks from the JSON file
-    fetch('../data/tasks.json')
+    fetch('../data/templates.json')
         .then(response => response.json())
         .then(tasks => {
             const now = new Date();
             let lastTaskDiv = null;
 
             // Update task times for the current day
-            tasks = updateTaskTimes(tasks);
+            tasks = updateTaskTimes(tasks.day[0].tasks);
 
             // Clear the task container
             const taskContainer = document.getElementsByClassName('tasks__container')[0];

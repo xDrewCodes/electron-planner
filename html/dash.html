@@ -55,7 +55,7 @@
         </div>
     </div>
     <script>
-        const { ipcRenderer } = require('electron');
+        const { ipcRenderer } = require('electron')
 
         document.getElementsByClassName('nav__minimize')[0].addEventListener('click', () => {
             ipcRenderer.send('minimize-window');

@@ -1,53 +1,118 @@
 {
-    "templates": {
-        "dayTemplates": [
-            {
-                "template1": [
-                    {
-                        "title": "Do stuff",
-                        "startTime": "now"
-                    },
-                    {
-                        "title": "Do more stuff",
-                        "startTime": "in a few"
-                    }
-                ],
-                "template2": [
-                    {
-                        "title": "Relax",
-                        "starTime": "whenever"
-                    },
-                    {
-                        "title": "maybe be productive",
-                        "starTime": "later"
-                    }
-                ],
-                "template3": [
-                    {
-                        "title": "go to church",
-                        "startTime": "when it starts"
-                    },
-                    {
-                        "title": "prepare for week",
-                        "starTime": "after church"
-                    }
-                ]
-            }
-        ],
-        "weekTemplates": [
-            {
-                "templateWeek1": [
-                    {
-                        "monday": "template1",
-                        "tuesday": "template1",
-                        "wednesday": "template1",
-                        "thursday": "template1",
-                        "friday": "template1",
-                        "saturday": "template2",
-                        "sunday": "template3"
-                    }
-                ]
-            }
-        ]
-    }
+    "day": [
+        {
+            "templateName": "template1",
+            "tasks": [
+                {
+                    "title": "Shower",
+                    "startTime": "2025-01-22T10:00:00.000Z"
+                },
+                {
+                    "title": "Read",
+                    "startTime": "2025-01-22T10:30:00.000Z"
+                },
+                {
+                    "title": "Eat Breakfast",
+                    "startTime": "2025-01-22T11:30:00.000Z"
+                },
+                {
+                    "title": "Enchanted Journal",
+                    "startTime": "2025-01-22T12:00:00.000Z"
+                },
+                {
+                    "title": "Stretch",
+                    "startTime": "2025-01-22T12:15:00.000Z"
+                },
+                {
+                    "title": "Be Calm",
+                    "startTime": "2025-01-22T12:35:00.000Z"
+                },
+                {
+                    "title": "Say Affirmations",
+                    "startTime": "2025-01-22T12:45:00.000Z"
+                },
+                {
+                    "title": "Music",
+                    "startTime": "2025-01-22T12:55:00.000Z"
+                },
+                {
+                    "title": "Start Coding",
+                    "startTime": "2025-01-22T13:00:00.000Z"
+                },
+                {
+                    "title": "Make Lunch",
+                    "startTime": "2025-01-22T17:00:00.000Z"
+                },
+                {
+                    "title": "Reply Texts",
+                    "startTime": "2025-01-22T17:30:00.000Z"
+                },
+                {
+                    "title": "Code More",
+                    "startTime": "2025-01-22T18:00:00.000Z"
+                },
+                {
+                    "title": "Walk Outside",
+                    "startTime": "2025-01-22T20:00:00.000Z"
+                },
+                {
+                    "title": "Guitar",
+                    "startTime": "2025-01-22T20:30:00.000Z"
+                },
+                {
+                    "title": "Enchanted Journal",
+                    "startTime": "2025-01-22T21:15:00.000Z"
+                },
+                {
+                    "title": "Guitar",
+                    "startTime": "2025-01-22T21:35:00.000Z"
+                },
+                {
+                    "title": "Free Time",
+                    "startTime": "2025-01-22T22:20:00.000Z"
+                }
+            ]
+        },
+        {
+            "templateName": "template2",
+            "tasks": [
+                {
+                    "title": "Relax",
+                    "starTime": "whenever"
+                },
+                {
+                    "title": "maybe be productive",
+                    "starTime": "later"
+                }
+            ]
+        },
+        {
+            "templateName": "template3",
+            "tasks": [
+                {
+                    "title": "go to church",
+                    "startTime": "when it starts"
+                },
+                {
+                    "title": "prepare for week",
+                    "starTime": "after church"
+                }
+            ]
+        }
+    ],
+    "week": [
+        {
+            "templateWeek1": [
+                {
+                    "monday": "template1",
+                    "tuesday": "template1",
+                    "wednesday": "template1",
+                    "thursday": "template1",
+                    "friday": "template1",
+                    "saturday": "template2",
+                    "sunday": "template3"
+                }
+            ]
+        }
+    ]
 }
