@@ -34,10 +34,11 @@ function setTasks() {
                     lastTaskDiv = newDiv;
                 }
             });
-
+            
             // Add the class to the last task that has happened
             if (lastTaskDiv) {
                 lastTaskDiv.classList.add('task__item--current');
+                console.log(now)
             }
         })
         .catch(error => {
@@ -74,7 +75,7 @@ function addTask(title, time) {
 
     // Find the target div (task list)
     const targetDiv = document.getElementsByClassName('tasks__container')[0];
-    
+
     if (targetDiv) {
         targetDiv.appendChild(newDiv);
     } else {
@@ -91,11 +92,7 @@ setTasks();
 const now = new Date();
 const secondsUntilNextMinute = 60 - now.getSeconds();
 
-// Set a timeout to start the interval at the next minute
-setTimeout(() => {
-    setTasks();
-    setInterval(setTasks, 60000); // 60000 milliseconds = 1 minute
-}, secondsUntilNextMinute * 1000);
+setInterval(setTasks, 1000);
 
 
 
