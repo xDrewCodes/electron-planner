@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planner</title>
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+    <link rel="stylesheet" href="../style.css">
+    <script src="https://kit.fontawesome.com/8a3e67506d.js" crossorigin="anonymous"></script>
+    <script src="../scripts/day.js" defer></script>
+</head>
+
+<body>
+    <nav>
+        <div class="nav__icons">
+            <img src="../assets/icons8-close-window-24.png" alt="" class="nav__img nav__close">
+            <img src="../assets/icons8-maximize-window-24 (1).png" alt="" class="nav__img nav__maximize">
+            <img src="../assets/icons8-minimize-window-24.png" alt="" class="nav__img nav__minimize">
+        </div>
+        <div class="nav__links">
+            <a href="./dash.html" class="nav__link">Dashboard</a>
+            <a href="#" class="nav__link">Goals</a>
+            <a href="#" class="nav__link nav__link--current">Day</a>
+            <a href="#" class="nav__link">Calendar</a>
+        </div>
+    </nav>
+    <div class="app__container">
+        <div class="day__nodes">
+            <div class="day__template--node node">
+                <div class="node__title--container">
+                    <h3 class="node__title">Daily Templates</h3>
+                </div>
+            </div>
+            <div class="week__template--node node">
+                <div class="node__title--container">
+                    <h3 class="node__title">Weekly Templates</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const { ipcRenderer } = require('electron');
+
+        document.getElementsByClassName('nav__minimize')[0].addEventListener('click', () => {
+            ipcRenderer.send('minimize-window');
+        });
+
+        document.getElementsByClassName('nav__maximize')[0].addEventListener('click', () => {
+            ipcRenderer.send('maximize-window');
+        });
+
+        document.getElementsByClassName('nav__close')[0].addEventListener('click', () => {
+            ipcRenderer.send('close-window');
+        });
+    </script>
+</body>
+
+</html>

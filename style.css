@@ -101,6 +101,10 @@ nav * {
     border-bottom: currentColor 3px solid;
 }
 
+.nav__link--current {
+    border-bottom: currentColor 3px solid;
+}
+
 
 /* MAIN PAGE */
 
@@ -117,7 +121,7 @@ nav * {
     translate: -50% -50%;
 }
 
-/* DASH NODES */
+/* dash nodes */
 
 
 .dashboard__nodes {
@@ -149,7 +153,7 @@ nav * {
 }
 
 
-/* DAILY TASKS */
+/* tasks */
 
 .tasks__node {
     flex-direction: column;
@@ -195,7 +199,7 @@ nav * {
 
 
 
-/* Goals */
+/* goals */
 
 .goals-controls__container {
     display: flex;
@@ -209,7 +213,7 @@ nav * {
 }
 
 
-/* CONTROLS */
+/* controls */
 
 .controls__node {
     flex-direction: column;
@@ -218,10 +222,35 @@ nav * {
     margin-top: var( --dashboard__spacing );
 }
 
-/* STATS */
+
+/* stats */
 
 .stats__node {
     flex-direction: column;
     width: 30%;
     height: 100%;
 }
+
+
+/* DAY PAGE */
+
+.day__nodes {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.day__template--node,
+.week__template--node {
+    width: 40%;
+    margin: 0 calc( var( --dashboard__spacing ) / 2 )
+}
+
+
+/* day */
+
+
+
+
+/* week */

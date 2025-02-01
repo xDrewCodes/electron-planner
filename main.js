@@ -19,7 +19,7 @@ function createWindow() {
     }
   });
 
-  mainWindow.loadFile('index.html');
+  mainWindow.loadFile('dash.html');
 
   // Handle minimize, maximize, and close events
   ipcMain.on('minimize-window', () => {

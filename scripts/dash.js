@@ -1,6 +1,6 @@
 function setTasks() {
     // Fetch the tasks from the JSON file
-    fetch('tasks.json')
+    fetch('../data/tasks.json')
         .then(response => response.json())
         .then(tasks => {
             const now = new Date();

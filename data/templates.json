@@ -1,0 +1,53 @@
+{
+    "templates": {
+        "dayTemplates": [
+            {
+                "template1": [
+                    {
+                        "title": "Do stuff",
+                        "startTime": "now"
+                    },
+                    {
+                        "title": "Do more stuff",
+                        "startTime": "in a few"
+                    }
+                ],
+                "template2": [
+                    {
+                        "title": "Relax",
+                        "starTime": "whenever"
+                    },
+                    {
+                        "title": "maybe be productive",
+                        "starTime": "later"
+                    }
+                ],
+                "template3": [
+                    {
+                        "title": "go to church",
+                        "startTime": "when it starts"
+                    },
+                    {
+                        "title": "prepare for week",
+                        "starTime": "after church"
+                    }
+                ]
+            }
+        ],
+        "weekTemplates": [
+            {
+                "templateWeek1": [
+                    {
+                        "monday": "template1",
+                        "tuesday": "template1",
+                        "wednesday": "template1",
+                        "thursday": "template1",
+                        "friday": "template1",
+                        "saturday": "template2",
+                        "sunday": "template3"
+                    }
+                ]
+            }
+        ]
+    }
+}
